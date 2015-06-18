@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 public class KeyValueStore {
-	private static final int SIZE = 5;// Deafult size for key-value store
+	private static final int SIZE = 20;// Deafult size for key-value store
 	private String keys[];
 	private int keyindex = -1;// index for keys
 	private int valueindex = -1;// index for values array
@@ -26,7 +26,7 @@ public class KeyValueStore {
 			throws ArrayIndexOutOfBoundsException {
 		if (key != null) {
 			if (keyindex < keys.length) {
-				if (!checkDuplicate(key, value)) {
+				if (!checkDuplicate(key, value)) { //checking duplicates
 
 					keys[++keyindex] = key;
 					values[++valueindex] = value;
@@ -41,7 +41,7 @@ public class KeyValueStore {
 		} else
 			System.out.println("Key cannot be null!!");
 	}
-
+    /* method to check duplicates */
 	private boolean checkDuplicate(String key, String value) {
 
 		for (int i = 0; i < keys.length; i++) {
@@ -54,7 +54,7 @@ public class KeyValueStore {
 	}
 
 	public String get(String key) {
-		int index = findKeyIndex(key);
+		int index = findKeyIndex(key);//method that returns index of keyarray for give string
 		if (index != -1 && index <= keys.length) {
 			return values[index];
 		}
@@ -70,7 +70,7 @@ public class KeyValueStore {
 		return null;
 
 	}
-
+/*method that returns index of keyarray for give string*/
 	private int findKeyIndex(String key) {
 
 		for (int i = 0; i < keys.length; i++) {
@@ -81,14 +81,14 @@ public class KeyValueStore {
 
 		return -1;
 	}
-
+/* removes key-value pair and replaces it with null */
 	public void remove(String key) {
 
 		int index = findKeyIndex(key);
 		keys[index] = null;
 		values[index] = null;
 	}
-
+/*method that displays all keyvalue pair */
 	public void showAll() {
 		if (!isEmpty()) {
 			System.out.println("Key Value Pair:");
@@ -129,7 +129,7 @@ public class KeyValueStore {
 		}
 		return count;
 	}
-
+/* sort the  key-value pair based on key an both ways */
 	public void sort(Boolean basedOnKey, Boolean asc) {
 		if (basedOnKey) {
 			if (asc) {
