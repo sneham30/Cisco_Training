@@ -240,7 +240,7 @@ public class KeyValueStore {
 
 		System.out.println("Available space:" + kv.showSpaceAvailable());
 		// System.out.println();
-		 kv.sort(false, false);
+		 kv.sort(true, false);
 		kv.showAll();
 
 		System.out.println("Enter key to remove:");
