@@ -257,5 +257,5 @@ public class KeyValueStore {
 		kv.remove(rk);
 		kv.showAll();
 		//kv.sort(false, false);
-	}
+	} 
 }
