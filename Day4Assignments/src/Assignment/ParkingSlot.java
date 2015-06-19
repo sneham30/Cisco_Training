@@ -5,10 +5,7 @@ public class ParkingSlot {
 	KeyValueStore kvstore[] ;
 	public ParkingSlot(){
 		kvstore = new KeyValueStore[NO_OF_FLOORS];
-		for(int i =0;i<kvstore.length;i++){
-			kvstore[i].put(new Car("car").toString() , new Slot("slot").toString());
-			kvstore[i].showAll();
-		}
+		
 	}
 	public ParkingSlot(int size){
 		kvstore = new KeyValueStore[size];
