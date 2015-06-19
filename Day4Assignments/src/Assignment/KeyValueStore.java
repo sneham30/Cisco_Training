@@ -240,8 +240,18 @@ public class KeyValueStore {
 
 		System.out.println("Available space:" + kv.showSpaceAvailable());
 		// System.out.println();
-		 kv.sort(true, false);
+		System.out.println("Value Based sort in descending order:");
+		 kv.sort(false, false);
 		kv.showAll();
+			System.out.println("Value Based sort in ascending order:");
+		 kv.sort(false, true);
+		 	kv.showAll();
+		 	System.out.println("Key Based sort in ascending order:");
+                      kv.sort(true, true);
+		 	kv.showAll();
+		 		System.out.println("Key Based sort in descending order:");
+		 		 kv.sort(true, false);
+		 	kv.showAll();
 
 		System.out.println("Enter key to remove:");
 		String rk = scan.next();
