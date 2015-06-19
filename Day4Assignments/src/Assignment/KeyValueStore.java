@@ -4,7 +4,7 @@ import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 public class KeyValueStore {
-	private static final int SIZE = 20;// Deafult size for key-value store
+	private static final int SIZE = 5;// Deafult size for key-value store
 	private String keys[];
 	private int keyindex = -1;// index for keys
 	private int valueindex = -1;// index for values array
