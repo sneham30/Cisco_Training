@@ -3,148 +3,154 @@ package Assignment1;
 import java.util.Scanner;
 
 public class InputNumber extends Calculate {
-  private int numbers[];
- public InputNumber(int... numbers){
-	 
-	  if(checkNumOfDigits(numbers)){
-		  this.numbers = numbers;
-	  }else{
-		  System.out.println("Invalid input!!");
-	  }
-  }
-  public boolean checkNumOfDigits(int... num){
-	  
-	  for(int i =0;i<num.length;i++){
-		  int length = 0;
-		  int digits[] =getDigits(num[i]);
-		  for(int j =0;j<digits.length;j++){
-			  if(digits[j]!=0){
-				  length++;
-			  }
-		  }
-	  
-		  if(length>=3 && length <=4){
-			  
-			  System.out.println("Valid number");
-			  return true;
-		  }
-		  else{
-			  System.out.println("Invalid number!! Please enter a number that as minimum of 3 digits and maximum of 4 digits.");
-			  return false;
-		  }
-	  }
-	return false;
-	  
-  }
-	@Override
-	public void sumOfDigits(int[] nums) {
-		for(int i =0 ;i<nums.length; i++){
-			int digits[] = getDigits(nums[i]);
-			int sum = 0;
-			for(int j =0;j<digits.length;j++){
-			
-				sum = sum +digits[j];
-			}
-			System.out.println("Sum Of Digits of number " + nums[i] + ":" +sum);
+	private int numbers[];
+/*constructor which takes variable no of arguments*/
+	public InputNumber(int... numbers) {
+
+		if (checkNumOfDigits(numbers)) { //checking fo validity of input
+			this.numbers = numbers;
+		} else {
+			System.out.println("Invalid input!!");
 		}
-		
 	}
 
-	@Override
-	public void reverseNumber(int[] nums) {
-		for(int i =0 ;i<nums.length; i++){
-			int digits[] = getDigits(nums[i]);
-			int rev = 0;
-			for(int j =0;j<digits.length;j++){
-				if(digits[j]!=0){
-				rev = rev * 10;
-				rev = rev + digits[j];
-				
+	/*method to check input validity i.e., returns true if no of digits is btwn 3 and 4 */
+	public boolean checkNumOfDigits(int... num) {
+
+		for (int i = 0; i < num.length; i++) {
+			int length = 0;
+			int digits[] = getDigits(num[i]);
+			for (int j = 0; j < digits.length; j++) {
+				if (digits[j] != 0) {
+					length++;
 				}
 			}
-			System.out.println("Reverse of number " + nums[i] + ":" +rev);
-			
+
+			if (length >= 3 && length <= 4) {
+
+				System.out.println("Valid number");
+				return true;
+			} else {
+				System.out
+						.println("Invalid number!! Please enter a number that as minimum of 3 digits and maximum of 4 digits.");
+				return false;
+			}
 		}
-		
+		return false;
+
 	}
 
-	@Override
-	public void factorialOfDigits(int[] nums) {
-		for(int i =0 ;i<nums.length; i++){
+	@Override/*abstract method overrided  to print sumOf digits*/
+	public void sumOfDigits(int[] nums) {
+		for (int i = 0; i < nums.length; i++) {
 			int digits[] = getDigits(nums[i]);
-			for(int j=0;j<digits.length;j++){
-			int fact =1;
-			while(digits[i]!=0){
-				fact = fact*digits[i]--;
-				
+			int sum = 0;
+			for (int j = 0; j < digits.length; j++) {
+
+				sum = sum + digits[j];
 			}
-			System.out.println("Factorial of " + j + "th digit of" + nums[i] + ":" +fact);
-			}
-			
+			System.out
+					.println("Sum Of Digits of number " + nums[i] + ":" + sum);
 		}
-		
+
 	}
 
-	@Override
+	@Override/*abstract method overrided  to print reverse digits*/
+	public void reverseNumber(int[] nums) {
+		for (int i = 0; i < nums.length; i++) {
+			int digits[] = getDigits(nums[i]);
+			int rev = 0;
+			for (int j = 0; j < digits.length; j++) {
+				if (digits[j] != 0) {
+					rev = rev * 10;
+					rev = rev + digits[j];
+
+				}
+			}
+			System.out.println("Reverse of number " + nums[i] + ":" + rev);
+
+		}
+
+	}
+
+	@Override/*abstract method overrided  to factorial digits*/
+	public void factorialOfDigits(int[] nums) {
+		for (int i = 0; i < nums.length; i++) {
+			int digits[] = getDigits(nums[i]);
+			for (int j = 0; j < digits.length; j++) {
+				int fact = 1;
+				while (digits[i] != 0) {
+					fact = fact * digits[i]--;
+
+				}
+				System.out.println("Factorial of " + j + "th digit of"
+						+ nums[i] + ":" + fact);
+			}
+
+		}
+
+	}
+
+	@Override/*abstract method overrided  to print average of digits*/
 	public void averageOfDigits(int[] nums) {
-		for(int i =0 ;i<nums.length; i++){
+		for (int i = 0; i < nums.length; i++) {
 			int digits[] = getDigits(nums[i]);
 			int sum = 0;
 			int avg = 0;
 			int length = 0;
-			for(int j =0;j<digits.length;j++){
-			if(digits[j]!=0){
-				sum = sum +digits[j];
-				length++;
+			for (int j = 0; j < digits.length; j++) {
+				if (digits[j] != 0) {
+					sum = sum + digits[j];
+					length++;
+				}
 			}
-			}
-			avg = sum/length;
-			System.out.println("Average Of Digits of number " + nums[i] + ":" +avg);
+			avg = sum / length;
+			System.out.println("Average Of Digits of number " + nums[i] + ":"
+					+ avg);
 		}
-		
+
 	}
 
-	@Override
+	@Override/*abstract method overrided  to print pattern digits*/
 	public void printPattern(int[] nums) {
 		Pattern2 pattern = new Pattern2();
-		int rows =0;
-		for(int i=0;i<nums.length;i++){
+		int rows = 0;
+		for (int i = 0; i < nums.length; i++) {
 			int lastDigit = checkLastDigit(nums[i]);
-			if(lastDigit == 1 || lastDigit == 2){
-				 rows = lastDigit * 3;
-				 pattern.printPattern(rows);
-			}else{
+			if (lastDigit == 1 || lastDigit == 2) {
+				rows = lastDigit * 3;
+				pattern.printPattern(rows);
+			} else {
 				rows = lastDigit;
 				pattern.printPattern(rows);
 			}
 		}
-		
+
 	}
-	public static void main(String[] args){
-		
-		//int i =0;
-		/*Scanner scan = new Scanner(System.in);
-		int n =0;
-	   int nos[] = new int[n] ;
-		for(int i=0;i<10;i++){
-		System.out.println("DO you Want to still continue? ");
-		String flag = scan.next();
-		while(flag.equalsIgnoreCase("yes") || flag.equalsIgnoreCase("y")){
-			n++;
-			System.out.println("Enter a number:");
-			nos[i] = scan.nextInt();
-			
-		}
-		
-		}*/
-		
-		InputNumber  numb = new InputNumber(121,456,1231);
+
+	public static void main(String[] args) {
+
+		// int i =0;
+		/*
+		 * Scanner scan = new Scanner(System.in); int n =0; int nos[] = new
+		 * int[n] ; for(int i=0;i<10;i++){
+		 * System.out.println("DO you Want to still continue? "); String flag =
+		 * scan.next(); while(flag.equalsIgnoreCase("yes") ||
+		 * flag.equalsIgnoreCase("y")){ n++;
+		 * System.out.println("Enter a number:"); nos[i] = scan.nextInt();
+		 * 
+		 * }
+		 * 
+		 * }
+		 */
+
+		InputNumber numb = new InputNumber(121, 456, 1231);//instantiating the InputNumber class
 		numb.averageOfDigits(numb.numbers);
 		numb.sumOfDigits(numb.numbers);
 		numb.factorialOfDigits(numb.numbers);
 		numb.reverseNumber(numb.numbers);
 		numb.printPattern(numb.numbers);
-		
+
 	}
 
 }

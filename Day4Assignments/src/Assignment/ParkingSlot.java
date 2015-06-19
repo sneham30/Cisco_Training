@@ -5,10 +5,15 @@ public class ParkingSlot {
 	KeyValueStore kvstore[] ;
 	public ParkingSlot(){
 		kvstore = new KeyValueStore[NO_OF_FLOORS];
-		
+		//initializeKeyValues(kvstore);
 	}
+	/*private void initializeKeyValues(KeyValueStore[] kvstore2) {
+		for(int i = 0;i< )
+		
+	}*/
 	public ParkingSlot(int size){
 		kvstore = new KeyValueStore[size];
+		//initializeKeyValues(kvstore);
 	}
 /*	void showAvailableParkingFloors(){
 		
