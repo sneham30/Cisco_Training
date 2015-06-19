@@ -8,6 +8,7 @@ public abstract class Mammals extends Animals {
 	/*static block initialising static variable */
 	static {
 		staticVariable = "Mammals";
+		 System.out.println("this is SIB of mammals");
 	}
 	/*Instance Intialisation block */
 	{

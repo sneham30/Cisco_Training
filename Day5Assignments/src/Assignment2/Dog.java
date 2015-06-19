@@ -13,7 +13,7 @@ public class Dog extends Mammals {
 	/*static Intialisation block */
 	static {
 		staticVariable = "dog";
-
+        System.out.println("this is SIB of dog");
 	}
 	/*Instance Intialisation block */
 	{

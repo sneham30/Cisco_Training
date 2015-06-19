@@ -8,6 +8,7 @@ public class Animals {
 	/*static block initialising static variable */
 	static {
 		staticVariable = "Animals";
+		 System.out.println("this is SIB of animals");
 	}
 	/*Instance Intialisation block */
 	{
