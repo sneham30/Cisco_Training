@@ -1,6 +1,5 @@
 package Assignment;
 
-import java.awt.event.KeyListener;
 import java.util.Scanner;
 
 public class KeyValueStore {

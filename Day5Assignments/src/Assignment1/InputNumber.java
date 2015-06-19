@@ -1,20 +1,23 @@
 package Assignment1;
 
-import java.util.Scanner;
 
 public class InputNumber extends Calculate {
 	private int numbers[];
-/*constructor which takes variable no of arguments*/
+
+	/* constructor which takes variable no of arguments */
 	public InputNumber(int... numbers) {
 
-		if (checkNumOfDigits(numbers)) { //checking fo validity of input
+		if (checkNumOfDigits(numbers)) { // checking fo validity of input
 			this.numbers = numbers;
 		} else {
 			System.out.println("Invalid input!!");
 		}
 	}
 
-	/*method to check input validity i.e., returns true if no of digits is btwn 3 and 4 */
+	/*
+	 * method to check input validity i.e., returns true if no of digits is btwn
+	 * 3 and 4
+	 */
 	public boolean checkNumOfDigits(int... num) {
 
 		for (int i = 0; i < num.length; i++) {
@@ -40,7 +43,8 @@ public class InputNumber extends Calculate {
 
 	}
 
-	@Override/*abstract method overrided  to print sumOf digits*/
+	@Override
+	/* abstract method overrided to print sumOf digits */
 	public void sumOfDigits(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			int digits[] = getDigits(nums[i]);
@@ -55,7 +59,8 @@ public class InputNumber extends Calculate {
 
 	}
 
-	@Override/*abstract method overrided  to print reverse digits*/
+	@Override
+	/* abstract method overrided to print reverse digits */
 	public void reverseNumber(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			int digits[] = getDigits(nums[i]);
@@ -73,7 +78,8 @@ public class InputNumber extends Calculate {
 
 	}
 
-	@Override/*abstract method overrided  to factorial digits*/
+	@Override
+	/* abstract method overrided to factorial digits */
 	public void factorialOfDigits(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			int digits[] = getDigits(nums[i]);
@@ -91,7 +97,8 @@ public class InputNumber extends Calculate {
 
 	}
 
-	@Override/*abstract method overrided  to print average of digits*/
+	@Override
+	/* abstract method overrided to print average of digits */
 	public void averageOfDigits(int[] nums) {
 		for (int i = 0; i < nums.length; i++) {
 			int digits[] = getDigits(nums[i]);
@@ -111,7 +118,8 @@ public class InputNumber extends Calculate {
 
 	}
 
-	@Override/*abstract method overrided  to print pattern digits*/
+	@Override
+	/* abstract method overrided to print pattern digits */
 	public void printPattern(int[] nums) {
 		Pattern2 pattern = new Pattern2();
 		int rows = 0;
@@ -144,7 +152,8 @@ public class InputNumber extends Calculate {
 		 * }
 		 */
 
-		InputNumber numb = new InputNumber(121, 456, 1231);//instantiating the InputNumber class
+		InputNumber numb = new InputNumber(121, 456, 1231);// instantiating the
+															// InputNumber class
 		numb.averageOfDigits(numb.numbers);
 		numb.sumOfDigits(numb.numbers);
 		numb.factorialOfDigits(numb.numbers);
