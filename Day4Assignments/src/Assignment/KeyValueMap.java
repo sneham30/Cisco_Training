@@ -25,7 +25,7 @@ public class KeyValueMap {
 			throws ArrayIndexOutOfBoundsException {
 		if (key != null) {
 			if (keyindex < keys.length) {
-				if (!checkDuplicate(key, value)) { //checking duplicates
+				if (!checkDuplicate(key, value)) { // checking duplicates
 
 					keys[++keyindex] = key;
 					values[++valueindex] = value;
@@ -40,7 +40,8 @@ public class KeyValueMap {
 		} else
 			System.out.println("Key cannot be null!!");
 	}
-    /* method to check duplicates */
+
+	/* method to check duplicates */
 	private boolean checkDuplicate(String key, String value) {
 
 		for (int i = 0; i < keys.length; i++) {
@@ -53,7 +54,8 @@ public class KeyValueMap {
 	}
 
 	public String get(String key) {
-		int index = findKeyIndex(key);//method that returns index of keyarray for give string
+		int index = findKeyIndex(key);// method that returns index of keyarray
+										// for give string
 		if (index != -1 && index <= keys.length) {
 			return values[index];
 		}
@@ -69,7 +71,8 @@ public class KeyValueMap {
 		return null;
 
 	}
-/*method that returns index of keyarray for give string*/
+
+	/* method that returns index of keyarray for give string */
 	private int findKeyIndex(String key) {
 
 		for (int i = 0; i < keys.length; i++) {
@@ -80,14 +83,16 @@ public class KeyValueMap {
 
 		return -1;
 	}
-/* removes key-value pair and replaces it with null */
+
+	/* removes key-value pair and replaces it with null */
 	public void remove(String key) {
 
 		int index = findKeyIndex(key);
 		keys[index] = null;
 		values[index] = null;
 	}
-/*method that displays all keyvalue pair */
+
+	/* method that displays all keyvalue pair */
 	public void showAll() {
 		if (!isEmpty()) {
 			System.out.println("Key Value Pair:");
@@ -128,7 +133,8 @@ public class KeyValueMap {
 		}
 		return count;
 	}
-/* sort the  key-value pair based on key an both ways */
+
+	/* sort the key-value pair based on key an both ways */
 	public void sort(Boolean basedOnKey, Boolean asc) {
 		if (basedOnKey) {
 			if (asc) {
@@ -167,7 +173,7 @@ public class KeyValueMap {
 
 			}
 		} else {
-			
+
 			if (asc) {
 				for (int i = 0; i < values.length; i++) {
 					for (int j = i + 1; j < values.length; j++) {
@@ -229,9 +235,10 @@ public class KeyValueMap {
 		String val1 = kv.get(index);
 		System.out.println("Value at index " + index + ":" + val1);
 
-		/*System.out.println("Enter key to remove:");
-		String rk = scan.next();
-		kv.remove(rk);*/
+		/*
+		 * System.out.println("Enter key to remove:"); String rk = scan.next();
+		 * kv.remove(rk);
+		 */
 		kv.showAll();
 
 		boolean b = kv.isEmpty();
@@ -241,21 +248,21 @@ public class KeyValueMap {
 		System.out.println("Available space:" + kv.showSpaceAvailable());
 		// System.out.println();
 		System.out.println("Value Based sort in descending order:");
-		 kv.sort(false, false);
+		kv.sort(false, false);
 		kv.showAll();
-			System.out.println("Value Based sort in ascending order:");
-		 kv.sort(false, true);
-		 	kv.showAll();
-		 	System.out.println("Key Based sort in ascending order:");
-                       kv.sort(true, true);
-		 	kv.showAll();
-		 		System.out.println("Key Based sort in descending order:");
-		 		 kv.sort(true, false);
-		 	kv.showAll();
+		System.out.println("Value Based sort in ascending order:");
+		kv.sort(false, true);
+		kv.showAll();
+		System.out.println("Key Based sort in ascending order:");
+		kv.sort(true, true);
+		kv.showAll();
+		System.out.println("Key Based sort in descending order:");
+		kv.sort(true, false);
+		kv.showAll();
 		System.out.println("Enter key to remove:");
 		String rk = scan.next();
 		kv.remove(rk);
 		kv.showAll();
-		//kv.sort(false, false);
+		// kv.sort(false, false);
 	}
 }
