@@ -69,8 +69,12 @@ public static void main(String arg[]){
 	ParkingSlot ps = new ParkingSlot();
 	//String cars[]= {"car001","car002"};
 	ps.parkACar("car001");
-	//ps.parkACar("car002");
-	String slot = ps.getACar("car001");
+	ps.parkACar("car002");
+	ps.parkACar("car003");
+	 ps.getACar("car001");
+	 ps.getACar("car002");
+	 ps.getACar("car003");
+	 
 	ps.showAvailableParkingFloors();
 	
 }
