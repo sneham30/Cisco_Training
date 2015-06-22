@@ -2,7 +2,7 @@ package Assignment;
 
 import java.util.Scanner;
 
-public class KeyValueStore {
+public class KeyValueMap {
 	private static final int SIZE = 5;// Deafult size for key-value store
 	private String keys[];
 	private int keyindex = -1;// index for keys
@@ -10,12 +10,12 @@ public class KeyValueStore {
 	private String values[];
 
 	/* construstors to intialise size */
-	public KeyValueStore() {
+	public KeyValueMap() {
 		this.keys = new String[SIZE];
 		this.values = new String[SIZE];
 	}
 
-	public KeyValueStore(int size) {
+	public KeyValueMap(int size) {
 		this.keys = new String[size];
 		this.values = new String[size];
 	}
@@ -129,11 +129,10 @@ public class KeyValueStore {
 		return count;
 	}
 /* sort the  key-value pair based on key an both ways */
-	//public void swap()
 	public void sort(Boolean basedOnKey, Boolean asc) {
 		if (basedOnKey) {
 			if (asc) {
-				
+
 				for (int i = 0; i < keys.length; i++) {
 					if (keys[i] != null) {
 						for (int j = i + 1; j < keys.length; j++) {
@@ -145,7 +144,7 @@ public class KeyValueStore {
 								values[i] = values[j];
 								keys[j] = temp;
 								values[j] = tval;
-								
+
 							}
 						}
 
@@ -161,13 +160,14 @@ public class KeyValueStore {
 							values[i] = values[j];
 							keys[j] = temp;
 							values[j] = tval;
-							
+
 						}
 					}
 				}
 
 			}
 		} else {
+			
 			if (asc) {
 				for (int i = 0; i < values.length; i++) {
 					for (int j = i + 1; j < values.length; j++) {
@@ -178,7 +178,7 @@ public class KeyValueStore {
 							values[i] = values[j];
 							keys[j] = temp;
 							values[j] = tval;
-							
+
 						}
 					}
 				}
@@ -202,7 +202,7 @@ public class KeyValueStore {
 	}
 
 	public static void main(String args[]) {
-		KeyValueStore kv = new KeyValueStore();
+		KeyValueMap kv = new KeyValueMap();
 
 		kv.put("a", " value");
 		kv.put("c", "val");
@@ -257,5 +257,5 @@ public class KeyValueStore {
 		kv.remove(rk);
 		kv.showAll();
 		//kv.sort(false, false);
-	} 
+	}
 }
