@@ -5,17 +5,20 @@ public class LocalInnerClass {
 		System.out.println("Constructor of outer Class");
 	}
 	public void localMethod(){
-		class LocalClass(){
-			public LocalClass(){
-				System.out.println("Constructor of inner Class");
-			}
-			public String changeName(){
-				name = "Sneha";
-			}
-		}
-		LocalClass  local = new LocalClass();
-		System.out.println(local.changeName());
-	}
+		final String message = "Sneha";
+		 
+		      class Local{ 
+		    	  Local(){
+		    		  System.out.println("Local Constuctor");
+		    	  }
+		        void msg(){  
+		          System.out.println(name + " "+ message);  
+		        }  
+		      }  
+		     Local loc = new Local();  
+		     loc.msg();  
+		   }  
+	
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		LocalInnerClass outer = new LocalInnerClass();
