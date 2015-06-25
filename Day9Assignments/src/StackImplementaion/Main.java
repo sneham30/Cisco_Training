@@ -24,6 +24,10 @@ public class Main {
 		System.out.println("Is stack Empty?? " + stack.isEmpty());
 		System.out.println("Object b is at :" + stack.search("b"));
 
+		System.out.println("poping the element in stack:" + stack.pop());
+		System.out.println("poping the element in stack:" + stack.pop());
+
+		System.out.println("Is stack Empty?? " + stack.isEmpty());
 		/*
 		 * creating object of lstack with LinkedLsit
 		 */

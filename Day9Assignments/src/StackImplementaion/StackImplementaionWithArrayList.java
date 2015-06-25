@@ -24,19 +24,25 @@ public class StackImplementaionWithArrayList implements StackImplementation {
 	/* method to implement pop of stack */
 	@Override
 	public Object pop() {
+		Object element = null;
+		if (!isEmpty()) {
+			element = arrList.get(index);
+			index--;
+			arrList.remove(element);
 
-		Object element = arrList.get(index);
-		index--;
-		arrList.remove(element);
+		}
 		return element;
-
-
 	}
 
 	/* method to implement peek() of stack */
 	@Override
 	public Object peek() {
-		Object element = arrList.get(index);
+		Object element = null;
+		if (!isEmpty()) {
+			element = arrList.get(index);
+
+
+		}
 		return element;
 	}
 
