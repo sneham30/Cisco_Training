@@ -179,7 +179,6 @@ public class KeyValueMap {
 		return this.capacity - keys.size();
 	}
 
-
 	public static void main(String args[]) {
 		KeyValueMap keyValue = new KeyValueMap();
 		// populating key-value store
