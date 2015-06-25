@@ -88,6 +88,7 @@ public class KeyValueMap {
 	 */
 	public Object get(Object key) {
 		int index = keys.indexOf(key);
+
 		if (index != -1) { return values.get(index); }
 		return null;
 	}
