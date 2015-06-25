@@ -26,18 +26,26 @@ public class StackImplementaionWithLinkedList implements StackImplementation {
 	@Override
 	public Object pop() {
 
-		Object element = linkList.get(index);
-		index--;
-		linkList.remove(element);
-		return element;
+		Object element = null;
+		if (!isEmpty()) {
+			element = linkList.get(index);
+			index--;
+			linkList.remove(element);
 
+		}
+		return element;
 
 	}
 
 	/* method to implement peek() of stack */
 	@Override
 	public Object peek() {
-		Object element = linkList.get(index);
+		Object element = null;
+		if (!isEmpty()) {
+			element = linkList.get(index);
+
+
+		}
 		return element;
 	}
 
