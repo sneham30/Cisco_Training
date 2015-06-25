@@ -8,5 +8,5 @@ public class StringToFloat {
 		//System.out.println("Casted value of " +str+ ":" +f);
 
 	}
-
+ 
 }
