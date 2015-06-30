@@ -28,7 +28,7 @@ public class IntegerStack {
 
 
 	public static void main(String[] args) {
-		//int i =0;
+		
 		Scanner scan = new Scanner(System.in);
 		IntegerStack st = new IntegerStack();
 		System.out.println("Enter elements to push");
