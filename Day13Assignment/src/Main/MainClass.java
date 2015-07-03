@@ -13,13 +13,19 @@ import Storage.CustomerFile;
 
 public class MainClass {
 
-	static Scanner custInput = new Scanner(System.in);
-	String pwd;
-	ArrayList<Customer> customers = new ArrayList<Customer>();
+	static Scanner custInput = new Scanner(System.in);// Scanner Object for
+														// fetching input
+	String pwd;// to hold password
+	ArrayList<Customer> customers = new ArrayList<Customer>();// list of
+																// customers
 
-	CustomerFile store = new CustomerFile();
+	CustomerFile store = new CustomerFile();// creating Object of customer file
+											// to store customer
 
-
+	/**
+	 * Method to take details of Customer for user and verifing the Password
+	 * and create a new customer
+	 */
 	public void enterDetails() {
 
 		System.out.println("Enter your First Name:");
@@ -50,6 +56,15 @@ public class MainClass {
 
 	}
 
+
+	/**
+	 * Method to verify password
+	 * 
+	 * @return boolean
+	 *         true if it satisfy password laws else false
+	 * @throws InvalidPassWordException
+	 * 
+	 */
 	private boolean verify(String pwd) {
 		if (pwd == null || pwd.length() < 4) {
 			try {
@@ -67,6 +82,15 @@ public class MainClass {
 		return true;
 	}
 
+	/**
+	 * Method to Login
+	 * takes in customer name and Password
+	 * if its valid credential user is logged
+	 *
+	 * @throws WrongCredentialsException
+	 *             if credentials dont match
+	 * 
+	 */
 	private void Login() throws WrongCredentialsException {
 		System.out.println("Enter your Full Name:");
 		String name = custInput.next();
@@ -93,7 +117,15 @@ public class MainClass {
 
 	}
 
-
+	/**
+	 * Method to showSecondMenu
+	 * displays menu for creating an account and fetching account the details
+	 * 
+	 * @param Customer
+	 *            logged in customer object from whom the menu should be
+	 *            displayed
+	 * 
+	 */
 	private void showSecondMenu(Customer customer) {
 		System.out.println("Welcome " + customer.getCustomerName() + "!!!");
 		System.out.println("Select an Option");
@@ -124,15 +156,28 @@ public class MainClass {
 
 	}
 
+	/**
+	 * Method to showLastMenu
+	 * displays menu for operating on account
+	 * 
+	 * @param Customer
+	 *            logged in customer object from whom the menu should be
+	 *            displayed
+	 * 
+	 */
 	private void showLastMenu(Customer customer) {
 		System.out.println("Select an Option");
 		System.out.println("Enter 1 to deposit");
 		System.out.println("Enter 2 for balanceEnquiry");
 		System.out.println("Enter 3 for withDrawal");
 		int option = custInput.nextInt();
+
 		switch (option) {
 			case 1:
-				System.out.println("Enter account to deposit:");
+				// fetch account number and takes amount to be deposited and
+				// deposits the amount
+				System.out.println("Enter account to deposit from : " + customer.getAccounts());
+
 				int accountNumber = custInput.nextInt();
 				for (Account acc : customer.getAccounts()) {
 					if (acc.getAccountNumber() == accountNumber) {
@@ -146,8 +191,9 @@ public class MainClass {
 
 				break;
 			case 2:
+				// fetch account number and displays its balance
 
-				System.out.println("Enter account for BalanceEnquiry:");
+				System.out.println("Enter account for BalanceEnquiry from: " + customer.getAccounts());
 				int accountNumber1 = custInput.nextInt();
 				for (Account acc : customer.getAccounts()) {
 					if (acc.getAccountNumber() == accountNumber1) {
@@ -158,8 +204,9 @@ public class MainClass {
 
 				break;
 			case 3:
-
-				System.out.println("Enter account for WithDrawal:");
+				// fetch account number and takes amount to be withdrawn and
+				// withdraws the amount
+				System.out.println("Enter account for WithDrawal from:" + customer.getAccounts());
 				int accountNumber2 = custInput.nextInt();
 				for (Account acc : customer.getAccounts()) {
 					if (acc.getAccountNumber() == accountNumber2) {
@@ -188,11 +235,32 @@ public class MainClass {
 		if (reply.equalsIgnoreCase("yes")) {
 			showLastMenu(customer);
 		} else {
-			saveCustomer(customer);
-			System.out.println("Your Logged out!!");
+
+			Logout(customer);
 		}
 	}
 
+	/**
+	 * Method to Logout
+	 *
+	 * @param Customer
+	 *            logged in customer object who has to logout
+	 * 
+	 */
+	private void Logout(Customer customer) {
+		showAccountDetails(customer);
+		saveCustomer(customer);
+		System.out.println("You are Logged out!! Thank you");
+
+	}
+
+	/**
+	 * Method to CreateNewAccount
+	 *
+	 * @param Customer
+	 *            logged in customer object who has to create new Account
+	 * 
+	 */
 	private void createNewAccount(Customer customer) {
 		System.out.println("Enter Account Type");
 		String type = custInput.next();
@@ -203,6 +271,13 @@ public class MainClass {
 
 	}
 
+	/**
+	 * Method to showAccountDetails
+	 *
+	 * @param Customer
+	 *            logged in customer object who wants accountDetails
+	 * 
+	 */
 	private void showAccountDetails(Customer customer) {
 		System.out.println("Your Account Details are:");
 		ArrayList<Account> accounts = customer.getAccounts();
@@ -213,6 +288,13 @@ public class MainClass {
 
 	}
 
+	/**
+	 * Method to saveCustomer
+	 * updates the customer details
+	 *
+	 * @param Customer
+	 *            logged in customer object
+	 */
 	private void saveCustomer(Customer customer) {
 		customers = store.readRecords();
 		if (customers.contains(customer)) {
