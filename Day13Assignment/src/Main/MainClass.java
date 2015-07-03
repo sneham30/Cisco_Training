@@ -19,6 +19,7 @@ public class MainClass {
 
 	CustomerFile store = new CustomerFile();
 
+
 	public void enterDetails() {
 
 		System.out.println("Enter your First Name:");
@@ -150,7 +151,7 @@ public class MainClass {
 				int accountNumber1 = custInput.nextInt();
 				for (Account acc : customer.getAccounts()) {
 					if (acc.getAccountNumber() == accountNumber1) {
-						System.out.println("Your Balance For AccountNumer:" + acc.getAccountNumber() + " is:" + acc.Checkbalance());
+						System.out.println("Your Balance For AccountNumer:" + acc.getAccountNumber() + " is:" + acc.getbalance());
 						break;
 					}
 				}
@@ -187,6 +188,7 @@ public class MainClass {
 		if (reply.equalsIgnoreCase("yes")) {
 			showLastMenu(customer);
 		} else {
+			saveCustomer(customer);
 			System.out.println("Your Logged out!!");
 		}
 	}
@@ -212,6 +214,11 @@ public class MainClass {
 	}
 
 	private void saveCustomer(Customer customer) {
+		customers = store.readRecords();
+		if (customers.contains(customer)) {
+			int index = customers.indexOf(customer);
+			customers.remove(index);
+		}
 		customers.add(customer);
 		store.addRecords(customers);
 
@@ -220,23 +227,6 @@ public class MainClass {
 	public static void main(String args[]) {
 
 		MainClass object1 = new MainClass();
-		/*
-		 * object1.customers.add(new Customer("sneha", "mysore",
-		 * "12234").addAccount("credit"));
-		 * object1.customers.add(new Customer("rahul", "bangalore", "12234"));
-		 * object1.customers.add(new Customer("arun", "tumkur", "12234"));
-		 * object1.customers.add(new Customer("krithika", "mysore", "12234"));
-		 * object1.store.addRecords(object1.customers);
-		 */
-		Customer customer1 = new Customer("sneha", "mysore", "12345");
-		customer1.addAccount("credit");
-		customer1.addAccount("credit");
-		Customer customer2 = new Customer("shree", "mysore", "12345");
-		customer2.addAccount("debit");
-		customer2.addAccount("credit");
-		object1.customers.add(customer1);
-		object1.customers.add(customer2);
-		object1.store.addRecords(object1.customers);
 
 		Scanner input = new Scanner(System.in);
 		System.out.println("Select an Option:");

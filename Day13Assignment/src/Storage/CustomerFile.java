@@ -11,29 +11,43 @@ import java.util.ArrayList;
 
 import CustomerAccountDetails.Customer;
 
-
+/*
+ * Class for performing file write and read operations
+ * or for storing customer details
+ */
 
 public class CustomerFile {
 
-	// static int count = 0;
 
+	// Crerating a File Object
+	File file = new File("CustomerDetails2.txt");
 
-	File file = new File("CustomerDetails.txt");
-
-
-
+	/**
+	 * Method to add records into file
+	 * Adds arraylist of objects of Customer into file
+	 * if file already exists it appends it else a new file is created
+	 * Uses ObjectOutputStream to Write Serializable list of objects of Customer
+	 * 
+	 * @param ArrayList
+	 *            <Customer>
+	 *            list of customer objects to be added into File
+	 * 
+	 */
 	public void addRecords(ArrayList<Customer> customers) {
+		FileOutputStream fos;
 		try {
-			FileOutputStream fos = new FileOutputStream(file);
+			if (file.exists()) {
+				fos = new FileOutputStream(file.getAbsolutePath(), true);
+			} else {
+				fos = new FileOutputStream(file);
+
+			}
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-
-
 			oos.writeObject(customers);
 
 
 			oos.flush();
 			oos.close();
-
 		}
 		catch (IOException e) {
 			System.out.println("Exception while writing to " + file.getName());
@@ -42,7 +56,17 @@ public class CustomerFile {
 
 	}
 
-	@SuppressWarnings({ "resource" })
+	/**
+	 * Method to read records from file
+	 * Reads arraylist of objects of Customer from file
+	 * Uses ObjectInputStream to read the Object written into file
+	 * 
+	 * @returns ArrayList
+	 *          <Customer>
+	 *          list of customer objects to be added into File
+	 * 
+	 */
+	@SuppressWarnings({ "resource", "unchecked" })
 	public ArrayList<Customer> readRecords() {
 		ArrayList<Customer> list = new ArrayList<Customer>();
 		try {
@@ -50,7 +74,6 @@ public class CustomerFile {
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			list = (ArrayList<Customer>) ois.readObject();
-			// System.out.println(list);
 
 		}
 		catch (FileNotFoundException e) {
@@ -69,4 +92,6 @@ public class CustomerFile {
 		return list;
 
 	}
+
+
 }
