@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 import CustomerAccountDetails.Account;
+import CustomerAccountDetails.Bank;
 import CustomerAccountDetails.Customer;
 import Exceptions.InvalidPassWordException;
 import Exceptions.LowBalanceException;
@@ -18,9 +19,10 @@ public class MainClass {
 	String pwd;// to hold password
 	ArrayList<Customer> customers = new ArrayList<Customer>();// list of
 																// customers
-
+	Customer newcustomer;
 	CustomerFile store = new CustomerFile();// creating Object of customer file
 											// to store customer
+	Bank bank;
 
 	/**
 	 * Method to take details of Customer for user and verifing the Password
@@ -39,10 +41,11 @@ public class MainClass {
 		this.pwd = custInput.next();
 		if (verify(this.pwd)) {
 
-			Customer newcustomer = new Customer(fname + lname, address, pwd);
+			newcustomer = new Customer(fname + lname, address, pwd);
 			customers.add(newcustomer);
-
-			store.addRecords(customers);
+			bank = new Bank(customers);
+			saveCustomer(newcustomer);
+			// store.addRecords(bank);
 			/*
 			 * for (Customer customer : customers) {
 			 * saveCustomer(customer);
@@ -96,11 +99,11 @@ public class MainClass {
 		String name = custInput.next();
 		System.out.println("Enter your Password:");
 		String pws = custInput.next();
-
-		ArrayList<Customer> customers = store.readRecords();
+		Bank bank = store.readRecords();
+		ArrayList<Customer> customers = bank.getCustomers();
 
 		for (Customer customer : customers) {
-			System.out.println("Customer Details");
+
 			if (customers.contains(customer)) {
 				if (customer.getCustomerName().equalsIgnoreCase(name) && customer.getPassWord().equals(pws)) {
 					System.out.println("Login SuccessFull!!");
@@ -296,19 +299,30 @@ public class MainClass {
 	 *            logged in customer object
 	 */
 	private void saveCustomer(Customer customer) {
-		customers = store.readRecords();
+		Bank bank = store.readRecords();
+		customers = bank.getCustomers();
 		if (customers.contains(customer)) {
 			int index = customers.indexOf(customer);
 			customers.remove(index);
 		}
 		customers.add(customer);
-		store.addRecords(customers);
+		Bank bank1 = new Bank(customers);
+		store.addRecords(bank1);
 
 	}
 
 	public static void main(String args[]) {
 
-		MainClass object1 = new MainClass();
+		// MainClass object1 = new MainClass();
+
+		/*
+		 * object1.customers.add(new Customer("sneha", "mysore", "1234"));
+		 * object1.customers.add(new Customer("snehashree", "mysore", "1234"));
+		 * object1.customers.add(new Customer("rahul", "mysore", "1234"));
+		 * object1.bank = new Bank(object1.customers);
+		 * object1.store.addRecords(object1.bank);
+		 */
+
 
 		Scanner input = new Scanner(System.in);
 		System.out.println("Select an Option:");

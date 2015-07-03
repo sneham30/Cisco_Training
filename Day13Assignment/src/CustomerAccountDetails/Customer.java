@@ -25,7 +25,8 @@ public class Customer implements Serializable {
 	// list of accounts the customer holds
 	private ArrayList<Account> accounts = new ArrayList<Account>();
 
-	int count = 0;// count used for generating unique customerNumber
+	static int count;// count used for generating unique customerNumber
+
 
 	/**
 	 * Parameterized Constructor for Customer
@@ -44,7 +45,7 @@ public class Customer implements Serializable {
 		this.address = address;
 		this.passWord = passWord;
 		this.accounts = getAccounts();
-		this.customerNumber = generateNewCustomerNumber();
+		this.customerNumber = generateNewCustomerNumber(count++);
 		System.out.println("Customer Created!!!");
 
 	}
@@ -52,12 +53,14 @@ public class Customer implements Serializable {
 	/**
 	 * Method to generate Unique CustomerNumber
 	 * Every Customer has an unique number
+	 * 
+	 * @param count
 	 *
 	 */
-	private int generateNewCustomerNumber() {
-		/* Random random = new Random(); */
-		int numb = 100;
-		numb = numb + count++;
+	private int generateNewCustomerNumber(int count) {
+
+		int numb = this.hashCode();
+		numb = numb + count;
 		return numb;
 	}
 
@@ -210,5 +213,6 @@ public class Customer implements Serializable {
 		}
 		return false;
 	}
+
 
 }

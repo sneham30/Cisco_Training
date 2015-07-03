@@ -7,9 +7,8 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.util.ArrayList;
 
-import CustomerAccountDetails.Customer;
+import CustomerAccountDetails.Bank;
 
 /*
  * Class for performing file write and read operations
@@ -20,7 +19,7 @@ public class CustomerFile {
 
 
 	// Crerating a File Object
-	File file = new File("CustomerDetails2.txt");
+	File file = new File("BankDetails.txt");
 
 	/**
 	 * Method to add records into file
@@ -33,17 +32,18 @@ public class CustomerFile {
 	 *            list of customer objects to be added into File
 	 * 
 	 */
-	public void addRecords(ArrayList<Customer> customers) {
+	public void addRecords(Bank bank) {
 		FileOutputStream fos;
 		try {
 			if (file.exists()) {
-				fos = new FileOutputStream(file.getAbsolutePath(), true);
+				fos = new FileOutputStream(file.getAbsolutePath());
+
 			} else {
 				fos = new FileOutputStream(file);
 
 			}
 			ObjectOutputStream oos = new ObjectOutputStream(fos);
-			oos.writeObject(customers);
+			oos.writeObject(bank);
 
 
 			oos.flush();
@@ -67,13 +67,15 @@ public class CustomerFile {
 	 * 
 	 */
 	@SuppressWarnings({ "resource", "unchecked" })
-	public ArrayList<Customer> readRecords() {
-		ArrayList<Customer> list = new ArrayList<Customer>();
+	public Bank readRecords() {
+		Bank bank = null;
 		try {
 
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream ois = new ObjectInputStream(fis);
-			list = (ArrayList<Customer>) ois.readObject();
+			bank = (Bank) ois.readObject();
+			// System.out.println("Customers available: " +
+			// bank.getCustomers());
 
 		}
 		catch (FileNotFoundException e) {
@@ -89,7 +91,7 @@ public class CustomerFile {
 			e.printStackTrace();
 		}
 
-		return list;
+		return bank;
 
 	}
 

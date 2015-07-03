@@ -23,7 +23,11 @@ public class Account implements Serializable {
 	private String accountType;// String accountType for type of account
 	private double balance;// Double balance for available/current balance
 
-	int count = 0;// count used for generating unique accountNumber
+	int count;// count used for generating unique accountNumber
+
+	{
+		this.count++;
+	}
 
 	/**
 	 * Parameterized Constructor for Account
@@ -75,7 +79,7 @@ public class Account implements Serializable {
 	private int generateNewAccountNumber() {
 
 		int numb = 10000;
-		numb = numb + count++;
+		numb = numb + count;
 		return numb;
 	}
 
@@ -234,4 +238,14 @@ public class Account implements Serializable {
 	public String toString() {
 		return "CustomerName: " + accountHolderName + "\n" + "AccountNumber:" + accountNumber + " \n" + "Type:" + accountType + "\n" + "Balance:" + balance;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj instanceof Account) {
+			Account cust = (Account) obj;
+			if (cust.getAccountNumber() == this.accountNumber) { return true; }
+		}
+		return false;
+	}
+
 }
