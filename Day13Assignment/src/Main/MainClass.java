@@ -112,6 +112,7 @@ public class MainClass {
 					break;
 				} else {
 					System.out.println("Unable to Login!! Invalid Credentials");
+					break;
 				}
 
 			}
