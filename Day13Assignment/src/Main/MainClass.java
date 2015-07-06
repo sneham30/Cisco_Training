@@ -110,10 +110,11 @@ public class MainClass {
 
 					showSecondMenu(customer);
 					break;
-				} else {
-					System.out.println("Unable to Login!! Invalid Credentials");
-					break;
 				}
+
+			} else {
+				System.out.println("Unable to Login!! Invalid Credentials");
+				break;
 
 			}
 		}

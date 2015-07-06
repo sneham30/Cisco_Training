@@ -74,8 +74,7 @@ public class CustomerFile {
 			FileInputStream fis = new FileInputStream(file);
 			ObjectInputStream ois = new ObjectInputStream(fis);
 			bank = (Bank) ois.readObject();
-			// System.out.println("Customers available: " +
-			// bank.getCustomers());
+			System.out.println("Customers available: " + bank.getCustomers());
 
 		}
 		catch (FileNotFoundException e) {
