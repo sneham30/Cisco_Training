@@ -1,0 +1,1 @@
+Create table Employee1 (empid int primary key,empname varchar(20),joiningdate date,designation varchar(20))
