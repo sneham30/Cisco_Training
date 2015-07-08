@@ -63,13 +63,13 @@ public class ArithematicOperationsTest extends TestCase {
 	 */
 	public void testMultiplication() {
 		int product = 15;
-		int prod = ArithematicOpearations.addition(value1, value2);
+		int prod = ArithematicOpearations.mutiply(value1, value2);
 		assertEquals(prod, product);
 	}
 
 	public void testFailedMultiplication() {
-		int product = 15;
-		int prod = ArithematicOpearations.addition(value1, value2);
+		int product = 0;
+		int prod = ArithematicOpearations.mutiply(value1, value2);
 		assertNotSame(prod, product);
 	}
 

@@ -72,10 +72,9 @@ public class ArithematicOpearations {
 	 */
 	public static int division(int m, int n) {
 		int quotient = 0;
-		if (m > n && n != 0) {
+		if (m >= n && n != 0) {
 			quotient = m / n;
 		}
 		return quotient;
 	}
-
 }
