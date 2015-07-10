@@ -39,6 +39,7 @@ public class CustomersHelper {
 
 				statement.close();
 				conn.close();
+
 			}
 
 
@@ -74,6 +75,7 @@ public class CustomersHelper {
 
 				statement.close();
 				conn.close();
+
 			}
 
 
@@ -112,6 +114,7 @@ public class CustomersHelper {
 
 				statement.close();
 				conn.close();
+
 			}
 
 

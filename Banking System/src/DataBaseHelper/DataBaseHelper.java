@@ -41,6 +41,15 @@ public class DataBaseHelper {
 		return conn;
 	}
 
+	public void closeDB() {
+		try {
+			DriverManager.getConnection("jdbc:derby:D:\\Users\\sneham\\MyDB;shutdown=true");
+		}
+		catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 
 }

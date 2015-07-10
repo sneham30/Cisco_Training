@@ -38,10 +38,12 @@ public class AccountsHelper {
 				statement.setString(2, account.getAccountHolderName());
 				statement.setString(3, account.getAccountType());
 				statement.setDouble(4, account.getbalance());
+
 				statement.execute();
 
 				statement.close();
 				conn.close();
+
 			}
 
 
@@ -76,6 +78,7 @@ public class AccountsHelper {
 
 				statement.close();
 				conn.close();
+
 			}
 
 
@@ -113,6 +116,7 @@ public class AccountsHelper {
 
 				statement.close();
 				conn.close();
+
 			}
 
 
@@ -132,6 +136,35 @@ public class AccountsHelper {
 	 * 
 	 */
 	public AccountsHelper() {
+	}
+
+
+
+	public void updateAccount() {
+		if (conn != null) {
+
+			try {
+				String sql = "update Accounts set BALANCE=? where ACCOUNTNUMBER=?";
+				PreparedStatement statement = conn.prepareStatement(sql);
+				statement.setInt(1, (int) account.getbalance());
+				statement.setInt(2, account.getAccountNumber());
+
+				statement.execute();
+
+				statement.close();
+				conn.commit();
+				conn.close();
+				dbhelper.closeDB();
+			}
+
+
+			catch (SQLException e) {
+				System.out.println("Exception during updating into Accounts table");
+				e.printStackTrace();
+			}
+
+		}
+
 	}
 
 

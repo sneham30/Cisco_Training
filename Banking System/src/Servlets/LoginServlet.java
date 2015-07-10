@@ -51,7 +51,7 @@ public class LoginServlet extends HttpServlet {
 		CustomersHelper custHelp = new CustomersHelper();
 		customers = custHelp.fetchRecords();
 		for (Customer customer : customers) {
-			if (userName.equalsIgnoreCase(customer.getCustomerName()) && password.equalsIgnoreCase(customer.getPassWord())) {
+			if (userName.equals(customer.getCustomerName()) && password.equals(customer.getPassWord())) {
 
 				RequestDispatcher reqdis = request.getRequestDispatcher("/WelcomeServlet");
 				reqdis.forward(request, response);

@@ -55,6 +55,13 @@ public class Account implements Serializable {
 
 	}
 
+
+
+	public Account(String accName, int accountNumber) {
+		this.accountNumber = accountNumber;
+		this.accountHolderName = accName;
+	}
+
 	/**
 	 * Method to initialize Balance of an account based on the account type
 	 * debit account has zero balance and a credit limit would be 15000
@@ -86,7 +93,7 @@ public class Account implements Serializable {
 	 */
 	private int generateNewAccountNumber() {
 
-		int numb = 10000;
+		int numb = this.hashCode();
 		numb = numb + count;
 		return numb;
 	}
@@ -169,7 +176,7 @@ public class Account implements Serializable {
 	 */
 
 	public double getbalance() {
-		return balance;
+		return this.balance;
 	}
 
 	/**
@@ -194,6 +201,7 @@ public class Account implements Serializable {
 	 */
 	public void deposit(double amount) {
 		this.balance = this.balance + amount;
+		setbalance(this.balance);
 		System.out.println("Deposit successfull!!! Your balance : " + this.balance);
 	}
 

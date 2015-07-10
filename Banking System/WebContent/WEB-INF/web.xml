@@ -39,4 +39,34 @@
     <servlet-name>NewCustomer</servlet-name>
     <url-pattern>/NewCustomer</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewAccount</display-name>
+    <servlet-name>NewAccount</servlet-name>
+    <servlet-class>Servlets.NewAccount</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewAccount</servlet-name>
+    <url-pattern>/NewAccount</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Transaction</display-name>
+    <servlet-name>Transaction</servlet-name>
+    <servlet-class>Servlets.Transaction</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Transaction</servlet-name>
+    <url-pattern>/Transaction</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>Logout</display-name>
+    <servlet-name>Logout</servlet-name>
+    <servlet-class>Servlets.Logout</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Logout</servlet-name>
+    <url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
 </web-app>

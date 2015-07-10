@@ -1,27 +1,24 @@
 package Servlets;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import CustomerAccountDetails.Customer;
-import DataBaseHelper.CustomersHelper;
-
 /**
- * Servlet implementation class NewCustomer
+ * Servlet implementation class Logout
  */
-public class NewCustomer extends HttpServlet {
+public class Logout extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public NewCustomer() {
+	public Logout() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,18 +38,9 @@ public class NewCustomer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		String name = request.getParameter("customerName");
-		String address = request.getParameter("customerAddress");
-		String password = request.getParameter("password");
-
-		Customer customer = new Customer(name, address, password);
-		CustomersHelper custHelp = new CustomersHelper(customer);
-		custHelp.insertIntoTable();
-
-		RequestDispatcher reqdis = request.getRequestDispatcher("/CustomerDetails.jsp");
-		request.setAttribute("CustomerName", customer.getCustomerName());
-		reqdis.forward(request, response);
+		PrintWriter out = response.getWriter();
+		out.println("<B>You have logged out Successfully!!!</b>");
+		out.println("<h1 font='35'><B><I>THANK YOU!!!!!</I></B></H1>");
 	}
 
 }

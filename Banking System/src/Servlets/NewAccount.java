@@ -8,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import CustomerAccountDetails.Customer;
-import DataBaseHelper.CustomersHelper;
+import CustomerAccountDetails.Account;
+import DataBaseHelper.AccountsHelper;
 
 /**
- * Servlet implementation class NewCustomer
+ * Servlet implementation class NewAccount
  */
-public class NewCustomer extends HttpServlet {
+public class NewAccount extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public NewCustomer() {
+	public NewAccount() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -41,17 +41,14 @@ public class NewCustomer extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request,
 			HttpServletResponse response) throws ServletException, IOException {
-
-		String name = request.getParameter("customerName");
-		String address = request.getParameter("customerAddress");
-		String password = request.getParameter("password");
-
-		Customer customer = new Customer(name, address, password);
-		CustomersHelper custHelp = new CustomersHelper(customer);
-		custHelp.insertIntoTable();
-
+		String type = request.getParameter("type");
+		String name = request.getParameter("custName");
+		System.out.println(name);
+		Account account = new Account(name, type);
+		AccountsHelper accHelp = new AccountsHelper(account);
+		accHelp.insertIntoTable();
 		RequestDispatcher reqdis = request.getRequestDispatcher("/CustomerDetails.jsp");
-		request.setAttribute("CustomerName", customer.getCustomerName());
+		request.setAttribute("CustomerName", name);
 		reqdis.forward(request, response);
 	}
 

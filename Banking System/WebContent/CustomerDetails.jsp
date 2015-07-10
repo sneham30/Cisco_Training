@@ -23,21 +23,32 @@ for(Customer customer:customers){
 	out.println("<B><I>Customer Address:" + customer.getAddress() +"</I></B><br>");
 	ArrayList<Account> accounts= accHelp.fetchRecords(customer.getCustomerName());
 	out.println("Your Account Details are:<br>");
+	out.println("Click on accountNumber for Transactions on it!!<br>");
 	if(accounts.size()!=0){
+		
 	out.println("<table border=2px> <caption> Accounts</caption>");
 	out.println("<tr><th>AccountNumber</th><th>AccountType</th><th>Balance<th></tr>");
 	for(Account account:accounts){
-		out.println("<tr><td>"+account.getAccountNumber() +"</td>");
+		out.println("<tr><td><a href='DoTransaction.jsp?accNo="+account.getAccountNumber()+"&accName="+account.getAccountHolderName()+"'>"+account.getAccountNumber() +"</a></td>");
 		out.println("<td>"+account.getAccountType() +"</td>");
 		out.println("<td>"+account.getbalance() +"</td></tr>");
 	
        }
+	String name = customer.getCustomerName();
+	out.println("<a href='NewAccount.jsp?name="+name+"'>Click here to create new Account </a>");
+	}else if(accounts.size()== 0){
+		out.println("You have no accounts!!!");
+		String name = customer.getCustomerName();
+		out.println("<a href='NewAccount.jsp?name="+name+"'>Click here to create new Account </a>");
 	}
+	
 }
 
 %>
 
-
+<form action="Logout" method="post">
+<input type="submit" value="Logout"/>
+</form>
 
 </body>
 </html>
