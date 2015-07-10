@@ -47,6 +47,6 @@
     <url-pattern>/WelcomeServlet</url-pattern>
   </servlet-mapping>
   <listener>
-    <listener-class>SessionCounterListener</listener-class>
+    <listener-class>Servlets.SessionCounterListener</listener-class>
   </listener>
 </web-app>
