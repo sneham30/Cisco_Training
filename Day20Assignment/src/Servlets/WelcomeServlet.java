@@ -43,12 +43,13 @@ public class WelcomeServlet extends HttpServlet {
 		response.setContentType("text/html");
 		PrintWriter out = response.getWriter();
 		HttpSession session = request.getSession();
-		session.invalidate();
+		int count = SessionCounterListener.getTotalActiveSession();
 		out.println("<HTML>");
 		out.println("<HEAD><TITLE>Welcome</TITLE></HEAD>");
 		out.println("<BODY>");
 		out.println("<B>Welcome!!!</B>");
 		out.println("<h1><I><B>" + request.getParameter("adminId") + "</I></B></h1>");
+		out.println("<h1><I><B> Listener count:" + count + "</I></B></h1>");
 		out.println("</BODY></HTML>");
 	}
 }
