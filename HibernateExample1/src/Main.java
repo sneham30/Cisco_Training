@@ -25,6 +25,7 @@ public class Main {
 		System.out.println("STUDENT ID=" + student.getStudentId());
 
 		session.close();
+		sFactory.close();
 
 
 	}
