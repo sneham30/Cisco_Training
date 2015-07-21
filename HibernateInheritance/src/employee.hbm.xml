@@ -1,9 +1,9 @@
-<?xml version='1.0' encoding='UTF-8'?>  
-<!DOCTYPE hibernate-mapping PUBLIC  
-          "-//Hibernate/Hibernate Mapping DTD 3.0//EN"  
-          "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">  
-  
-<hibernate-mapping>  
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+ "-//Hibernate/Hibernate Mapping DTD//EN"
+ "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+          
+<hibernate-mapping package="Model">  
 <class name="Employee" table="employee" discriminator-value="emp">  
 <id name="id">  
 <generator class="increment"></generator>  
@@ -18,7 +18,7 @@
             
 <subclass name="ContractEmployee" discriminator-value="con_emp">  
 <property name="pay_per_hour"></property>  
-<property name="contract_duration"></property>  
+<property name="contract_duartion"></property>  
 </subclass>  
 </class>  
             
