@@ -1,0 +1,22 @@
+<!-- html  Login Page that takes user Id and Password  -->
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+<script type="text/javascript">
+function redirect(){
+	window.location = "NewCustomer.jsp";
+}</script>
+</head>
+<body>
+
+<form action="LoginServlet" method= "post">
+User ID: <input type="text" name="adminId"/><br>
+<br>
+Password: <input type="password" name="pwd"/><br>
+<input type="submit" value="SignIn"/>
+<input type="button" value="SignUp" onclick="redirect()"/>
+</form>
+</body>
+</html>
