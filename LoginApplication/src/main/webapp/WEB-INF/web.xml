@@ -1,0 +1,21 @@
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+  <display-name>Banking System</display-name>
+  <welcome-file-list>
+    <welcome-file>Login.html</welcome-file>
+    <welcome-file>Login.htm</welcome-file>
+    <welcome-file>Login.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <servlet>
+  	<servlet-name>LoginDetails</servlet-name>
+  	<servlet-class>Servlets.LoginDetails</servlet-class>
+  </servlet>
+  
+  <servlet-mapping>
+  	<servlet-name>LoginDetails</servlet-name>
+  	<url-pattern>/LoginDetails</url-pattern>
+  </servlet-mapping>
+  </web-app>
