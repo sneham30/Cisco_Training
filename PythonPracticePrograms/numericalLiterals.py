@@ -1,0 +1,10 @@
+num1=100
+num2=10.34
+num3=-100
+num5=-12.45
+print(num1)
+print(num2)
+print(num3)
+print(num5)
+end=None
+print(end)
